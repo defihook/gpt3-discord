@@ -50,16 +50,16 @@ client.on("messageCreate", async function (message) {
     try {
 
         if (args.length >= 2) {
-            temperature = Number(args[1]);
+            temperature = Number(args[1]) || temperature;
         }
         if (args.length >= 3) {
-            max_tokens = Number(args[2]);
+            max_tokens = Number(args[2]) || max_tokens;
         }
         if (args.length >= 4) {
-            frequency_penalty = Number(args[3]);
+            frequency_penalty = Number(args[3]) || frequency_penalty;
         }
         if (args.length >= 5) {
-            presence_penalty = Number(args[4]);
+            presence_penalty = Number(args[4]) || presence_penalty;
         }
     } catch (e) {
         await message.reply("failed parsing parameters.");
