@@ -34,7 +34,7 @@ client.on("messageCreate", async function (message) {
         console.log(lastRequest);
         const gptResponse = await openai.createCompletion("text-davinci-002", lastRequest);
         // @ts-ignore
-        lastResponse = gptResponse.data.choices[0].text || "Fin.";
+        lastResponse = gptResponse.data.choices[0].text || "fin.";
 
         await message.reply(`${lastResponse}`);
         return;
