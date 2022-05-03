@@ -47,17 +47,23 @@ client.on("messageCreate", async function (message) {
     let frequency_penalty = 0.3;
     let presence_penalty = 0;
 
-    if (args.length >= 2) {
-        temperature = Number(args[1]);
-    }
-    if (args.length >= 3) {
-        max_tokens = Number(args[2]);
-    }
-    if (args.length >= 4) {
-        frequency_penalty = Number(args[3]);
-    }
-    if (args.length >= 5) {
-        presence_penalty = Number(args[4]);
+    try {
+
+        if (args.length >= 2) {
+            temperature = Number(args[1]);
+        }
+        if (args.length >= 3) {
+            max_tokens = Number(args[2]);
+        }
+        if (args.length >= 4) {
+            frequency_penalty = Number(args[3]);
+        }
+        if (args.length >= 5) {
+            presence_penalty = Number(args[4]);
+        }
+    } catch (e) {
+        await message.reply("failed parsing parameters.");
+        return;
     }
 
     const config: CreateCompletionRequest = {
