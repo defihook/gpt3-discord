@@ -10,6 +10,11 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+client.on('ready', () => {
+    console.log('Client is online!');
+    // @ts-ignore
+    client.user.setActivity('!gpt3 | check #🤖｜playground pinned message');
+});
 
 let lastRequest: CreateCompletionRequest = {
     prompt: "hello",
